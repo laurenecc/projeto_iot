@@ -30,16 +30,27 @@ O sensor também possui histerese ≤ 2%. Seu tempo de resposta é de apenas 1 s
 Vamos utilizar um relay como um atuador eletromagnético da marca Songle, com 1 canal de 5V que funciona com Arduino, ESP32, ESP8266, Raspberry Pi ou qualquer microcontrolador de 5V ou 3,3V.
 
 O relay possui as seguintes especificações:
+
 Normalmente aberto e normalmente fechado.
+
 Módulos definidos em níveis altos ou baixos através de jumpers.
+
 Isolamento do optoacoplador patch.
+
 Blocos terminais para entrada e saída (input and output).
+
 Dois indicadores LED de potência verde e o status do relay em vermelho.
+
 Tensão operacional de 5V.
+
 Tensão de disparo de 3,3V a 5V.
+
 Corrente de disparo de 5mA.
+
 Carga máxima de AC 250V/10A, DC 30V/10A.
+
 Dimensão de 50 mm x 26 mm x 18,5 mm.
+
 
 2.2 Métodos
 O projeto é composto por sua parte em hardware, já detalhada acima, e uma parte em software. Sua parte em hardware é responsável por monitorar o ambiente local, ou seja, o sensor BME280 faz a mensuração local de temperatura e umidade, esses dados coletados serão validados e então encaminhados para uma base online através do protocolo MQTT. A parte em software é responsável por manter uma base e realizar a comparação da mensuração com o valor desejado, para determinar a ação do atuador.
@@ -51,10 +62,15 @@ Abaixo temos a tabela que descreve como conectar os pinos do sensor BME280 com a
 Tabela 1. Interface BME280 com ESP32
 
 BME280	ESP32
+
 Vin	Conectado com 3.3V
+
 GND	GND
+
 SCL	GPIO22
+
 SDA	GPIO21
+
 
 4 Atuador Eletromagnético
 Entendemos que podemos conectar um LED diretamente com a placa ESP32, mas não podemos conectar dispositivos de alta tensão, como um umidificador de ar, que é a proposta do projeto. Para não queimar a placa ESP32 vamos utilizar um relay como atuador.
@@ -66,9 +82,13 @@ Abaixo temos a tabela que descreve como conectar os pinos do relay com a placa E
 Tabela 2. Interface do Relay com a placa ESP32
 
 Relay	ESP32
+
 DC+	Conectado com o vin 5V
+
 IN	GPIO13
+
 DC-	GND
+
 
 6 Protocolo MQTT
 MQTT (Message Queue Telemetry Transport) é um protocolo de comunicação baseado em padrões, um conjunto de regras que viabiliza a troca de mensagens entre computadores. O MQTT é amplamente utilizado na Internet das Coisas (IoT), onde sensores inteligentes e outros dispositivos precisam se comunicar em redes com recursos limitados e largura de banda restrita.
